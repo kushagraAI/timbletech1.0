@@ -38,3 +38,12 @@ class Comment(models.Model):
 
     def __str__(self):
         return f"{self.user.username} - {self.review.movie.title}"
+
+
+class Recommendation(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    movie = models.ForeignKey(Tmdb_Movie, on_delete=models.CASCADE)
+    score = models.FloatField()
+
+    def __str__(self):
+        return f"{self.user.username} - {self.movie.title}"
